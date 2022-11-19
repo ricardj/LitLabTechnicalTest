@@ -1,11 +1,15 @@
 ﻿using System;
+using UnityEngine;
 
 [Serializable]
-public class PlayerInstance : IInstance
+public class PlayerInstance : Instance<PlayerSO>
 {
-    public string playerName;
-    public ResourceAmount currencyAmount;
-    public ResourceAmount healthAmount;
-    public ResourceAmount levelAmount;
+    [SerializeField] string playerName;
+    [SerializeField] ResourceAmount currencyAmount;
+    [SerializeField] ResourceAmount healthAmount;
+    [SerializeField] ResourceAmount levelAmount;
 
+    public PlayerInstance(PlayerSO model) : base(model)
+    {
+    }
 }

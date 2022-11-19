@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 
-public interface IShopPurchaseable
+public interface IShopPurchaseable : IRepresentable
 {
-    public string GetName();
-    public Sprite GetAppearance();
+
     public ShopPurchaseRequirements GetPurchaseRequirements();
 }

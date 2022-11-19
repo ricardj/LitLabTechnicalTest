@@ -1,4 +1,7 @@
-﻿public class InventoryCollectionSO : CollectionSO<IInventoryItem>
+﻿using UnityEngine;
+
+[CreateAssetMenu(menuName ="CyberMonsters/New Inventory Collection")]
+public class InventoryCollectionSO : CollectionSO<IInventoryItem>
 {
 
 }

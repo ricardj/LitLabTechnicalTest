@@ -7,7 +7,7 @@ public class PlayerSO : ModelSO<PlayerInstance>
 
     public override PlayerInstance GetInstance()
     {
-        return new PlayerInstance()
+        return new PlayerInstance(this)
         {
 
         };
