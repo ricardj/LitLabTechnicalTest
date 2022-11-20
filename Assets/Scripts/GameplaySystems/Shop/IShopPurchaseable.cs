@@ -2,6 +2,5 @@
 
 public interface IShopPurchaseable : IRepresentable
 {
-
-    public ShopPurchaseRequirements GetPurchaseRequirements();
+    ShopPurchaseRequirements GetPurchaseRequirements();
 }

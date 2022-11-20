@@ -1,6 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
+[Serializable]
 public class ShopPurchaseRequirements
 {
-    public List<ResourceAmount> costs;
+    [SerializeField] List<ResourceAmount> _costs;
+
+    public List<ResourceAmount> GetCosts()
+    {
+        return _costs;
+    }
 }

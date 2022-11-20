@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class CollectionSO<T> : ScriptableObject
 {
@@ -28,6 +29,15 @@ public class CollectionSO<T> : ScriptableObject
     public void Clear()
     {
         _collectionList.Clear();
+    }
+
+    public T GetRandomItem()
+    {
+        if (_collectionList.Count > 0)
+        {
+            return _collectionList[Random.Range(0, _collectionList.Count)];
+        }
+        return default(T);
     }
 
 }
