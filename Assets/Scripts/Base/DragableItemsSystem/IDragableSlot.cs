@@ -5,8 +5,13 @@ using UnityEngine.Events;
 
 public class IDragableSlot : MonoBehaviour
 {
-    [SerializeField] protected IDragableMonoBehaviour _currentDragable;
+    [Header("Debug configuration")]
+    [SerializeField] Color _targetDebugColor = Color.red;
+    [SerializeField] float _inventorySlotRadius = 2f;
     [SerializeField] protected float _slotSnapDistance = 4;
+
+    [Header("Debug value")]
+    [SerializeField] protected IDragableMonoBehaviour _currentDragable;
 
     [Header("Events")]
     public DragableMonoBehaviourEvent OnDragableItemPositioned;
@@ -54,5 +59,12 @@ public class IDragableSlot : MonoBehaviour
     public bool IsTargetInRange(Transform targetTransform)
     {
         return Vector3.Distance(targetTransform.position, transform.position) <= _slotSnapDistance;
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = _targetDebugColor;
+        Gizmos.DrawSphere(transform.position, _inventorySlotRadius);
+        Gizmos.DrawWireSphere(transform.position, _slotSnapDistance);
     }
 }

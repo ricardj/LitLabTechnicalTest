@@ -4,8 +4,8 @@ using UnityEngine;
 public class InventorySlot : IDragableSlot
 {
     [Header("Configuration")]
+
     public int inventorySlotId = 0;
-    [SerializeField] float _inventorySlotRadius = 2f;
 
 
     [Header("Debug values")]
@@ -13,14 +13,7 @@ public class InventorySlot : IDragableSlot
     [SerializeField] GameObject _currentInventoryPrefabInstance;
 
 
-    public void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, _inventorySlotRadius);
-
-        Gizmos.DrawWireSphere(transform.position, _slotSnapDistance);
-
-    }
+ 
 
     public void Setup(IInventoryItem inventoryItem)
     {
