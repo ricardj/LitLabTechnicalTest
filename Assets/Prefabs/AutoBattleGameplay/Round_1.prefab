@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c11d8f013b09d4195f9fbd74beac2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preparationPhase: {fileID: 1647393710013134438}
-  combatPhase: {fileID: 1647393709354328332}
+  _autoBattlePhase:
+  - {fileID: 1647393710013134438}
+  - {fileID: 1647393709354328332}
 --- !u!1 &1647393709354328334
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +91,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f5456f0eaf974b45b68274012412ea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timeBetweenEnemySpawnAndCombatStart: 0.4
+  _spawnEnemyTeam: {fileID: 11400000, guid: 5bdb697627918c34682f9712e7bc0cc7, type: 2}
+  _startCombat: {fileID: 11400000, guid: 47e2cc0fd2ca6c6409e60128873ea99e, type: 2}
+  _combatFinished: {fileID: 11400000, guid: 1a57f09ad57093f40a349326641942ce, type: 2}
+  _isCombatFinished: 0
 --- !u!1 &1647393710013134440
 GameObject:
   m_ObjectHideFlags: 0

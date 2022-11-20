@@ -5241,6 +5241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _autoAction: 1
+  _eventTriggered: {fileID: 0}
   _characterCollection: {fileID: 11400000, guid: 687d45e4598f7fb47ae5b9a7902e4d62, type: 2}
   _shopPurchaseables: {fileID: 11400000, guid: 02118d1d7f849cb4abe0cbdb1308ef91, type: 2}
 --- !u!1001 &633218654
@@ -7180,6 +7181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _autoAction: 1
+  _eventTriggered: {fileID: 0}
   _playerModel: {fileID: 11400000, guid: 0628c891b6d8e334c978d80f2d64414b, type: 2}
   _playerManager: {fileID: 93631382}
   _currentPlayerInstance:
@@ -8136,6 +8138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 913786917}
+  - component: {fileID: 913786918}
   m_Layer: 0
   m_Name: A - SpawnEnemyTeam
   m_TagString: Untagged
@@ -8157,6 +8160,39 @@ Transform:
   m_Father: {fileID: 408316727}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &913786918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913786916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f06d6ff645897864f90734d6f7512ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _autoAction: 1
+  _eventTriggered: {fileID: 11400000, guid: 5bdb697627918c34682f9712e7bc0cc7, type: 2}
+  _usableEnemyModels: {fileID: 11400000, guid: 687d45e4598f7fb47ae5b9a7902e4d62, type: 2}
+  _currentEnemiesCollection: {fileID: 11400000, guid: 3e64a28406799d24cbd7870dff58e1d6, type: 2}
+  _enemiesTargetSlots:
+  - {fileID: 880123792}
+  - {fileID: 1487888361}
+  - {fileID: 727963228}
+  - {fileID: 1946497979}
+  - {fileID: 1859475339}
+  - {fileID: 196378998}
+  - {fileID: 687287260}
+  - {fileID: 1590193906}
+  - {fileID: 718240999}
+  - {fileID: 1583025365}
+  - {fileID: 202276040}
+  - {fileID: 1685622338}
+  - {fileID: 375492801}
+  - {fileID: 2031816784}
+  minEnemies: 4
+  maxEnemies: 10
 --- !u!1001 &918148738
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14426,6 +14462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _autoAction: 1
+  _eventTriggered: {fileID: 0}
   inventoryCollection: {fileID: 11400000, guid: 17c06d0bc6f64d14a960b0f8e5eb779f, type: 2}
 --- !u!1001 &1424440682
 PrefabInstance:

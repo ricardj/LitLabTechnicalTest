@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,11 +11,11 @@ public class IDragableMonoBehaviour : MonoBehaviour
     [SerializeField] DragableSlotsCollectionSO _targetSlots;
 
     [Header("Debug values")]
-    [SerializeField] Camera _mainCamera;
-    //[SerializeField] Vector3 _originalPosition;
-    [SerializeField] bool _objectSelected = false;
-    [SerializeField] IDragableSlot _currentDragableSlot;
-    [SerializeField] IDragableSlot _lastDragableSlot;
+    [SerializeField][ReadOnly] Camera _mainCamera;
+    [SerializeField][ReadOnly] bool _objectSelected = false;
+    [SerializeField][ReadOnly] IDragableSlot _currentDragableSlot;
+    [SerializeField][ReadOnly] IDragableSlot _lastDragableSlot;
+    [SerializeField][ReadOnly] bool _isDraggingEnabled = true;
 
     [Header("Events")]
     public DragableMonoBehaviourEvent OnStartDragging;
@@ -22,7 +23,8 @@ public class IDragableMonoBehaviour : MonoBehaviour
 
     void OnMouseDown()
     {
-        SelectObject();
+        if (_isDraggingEnabled)
+            SelectObject();
     }
 
     private void SelectObject()
@@ -113,6 +115,16 @@ public class IDragableMonoBehaviour : MonoBehaviour
     public IDragableSlot GetCurrentDragableSlot()
     {
         return _currentDragableSlot;
+    }
+
+    public void Deactivate()
+    {
+        _isDraggingEnabled = false;
+    }
+
+    public void Activate()
+    {
+        _isDraggingEnabled = true;
     }
 }
 
