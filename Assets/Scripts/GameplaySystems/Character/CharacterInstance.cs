@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public class CharacterInstance : Instance<CharacterSO>, ITagged, IShopPurchaseable
+public class CharacterInstance : Instance<CharacterSO>, ITagged, IShopPurchaseable, IInventoryItem
 {
     [SerializeField] string _characterName;
     [SerializeField] TaggedData _taggedData;
@@ -32,5 +32,10 @@ public class CharacterInstance : Instance<CharacterSO>, ITagged, IShopPurchaseab
         return _taggedData;
     }
 
+    public GameObject GetSpawnPrefab()
+    {
+        return GetModel().GetSpawnPrefab();
+    }
 
+ 
 }

@@ -1,4 +1,6 @@
-﻿public interface IInventoryItem
+﻿using UnityEngine;
+
+public interface IInventoryItem : ISpawneable
 {
 
 }

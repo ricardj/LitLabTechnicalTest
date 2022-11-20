@@ -2,11 +2,12 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "CyberMonsters/New Character")]
-public class CharacterSO : ModelSO<CharacterInstance>, IVisible, ITagged, IShopPurchaseable
+public class CharacterSO : ModelSO<CharacterInstance>, IVisible, ITagged, IShopPurchaseable, ISpawneable
 {
 
     [SerializeField] string _defaultCharacterName;
     [SerializeField] Sprite _defaultCharacterSprite;
+    [SerializeField] CharacterController _characterPrefab;
     [SerializeField] TaggedData _taggedData;
     [SerializeField] ShopPurchaseRequirements _defaultPurchaseRequirements;
 
@@ -35,5 +36,8 @@ public class CharacterSO : ModelSO<CharacterInstance>, IVisible, ITagged, IShopP
         return _defaultPurchaseRequirements;
     }
 
-
+    public GameObject GetSpawnPrefab()
+    {
+        return _characterPrefab.gameObject;
+    }
 }

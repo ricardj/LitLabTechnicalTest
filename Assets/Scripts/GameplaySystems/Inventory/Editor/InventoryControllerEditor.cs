@@ -17,7 +17,7 @@ public class InventoryControllerEditor : Editor
         if (GUILayout.Button("Fetch inventory slots"))
         {
             InventoryController inventoryController = (InventoryController)target;
-            inventoryController.inventorySlots = inventoryController.gameObject.GetComponentsInChildren<InventorySlot>().ToList();
+            inventoryController.InventorySlots = inventoryController.gameObject.GetComponentsInChildren<InventorySlot>().ToList();
 
         }
 
@@ -25,7 +25,7 @@ public class InventoryControllerEditor : Editor
         if (GUILayout.Button("Algin Inventory Slots"))
         {
             InventoryController inventoryController = ((InventoryController)target);
-            List<InventorySlot> inventorySlots = inventoryController.inventorySlots;
+            List<InventorySlot> inventorySlots = inventoryController.InventorySlots;
             for (int i = 0; i < inventorySlots.Count; i++)
             {
                 InventorySlot currentSlot = inventorySlots[i];

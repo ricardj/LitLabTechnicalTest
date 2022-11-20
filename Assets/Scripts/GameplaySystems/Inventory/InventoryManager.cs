@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Events;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -6,11 +8,33 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] InventoryCollectionSO _inventoryCollection;
 
     [Header("Debug values")]
-    [SerializeField] InventoryController inventoryController;
-    
+    [SerializeField] InventoryController _inventoryController;
+
+
+    public void OnEnable()
+    {
+        _inventoryCollection.OnCollectionUpdated.AddListener(UpdateInventory);
+    }
+
+
+    public void OnDisable()
+    {
+        _inventoryCollection.OnCollectionUpdated.RemoveListener(UpdateInventory);
+    }
+
+    private void UpdateInventory()
+    {
+        _inventoryController.Setup(_inventoryCollection.GetItems());
+    }
+
+    public void Start()
+    {
+        FetchInventory();
+    }
+
 
     public void FetchInventory()
     {
-        inventoryController = FindObjectOfType<InventoryController>();
+        _inventoryController = FindObjectOfType<InventoryController>();
     }
 }

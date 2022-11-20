@@ -6,9 +6,10 @@ public class AddPurchaseToInventory : IAction<IShopPurchaseable>
 
     public override void ExecuteAction(IShopPurchaseable data = null, UnityAction onFinish = null)
     {
-        if (data is IInventoryItem)
+        if (data is CharacterSO)
         {
-            IInventoryItem inventoryItem = (IInventoryItem)data;
+            CharacterInstance newCharacterInstance = ((CharacterSO)data).GetInstance();
+            IInventoryItem inventoryItem = (IInventoryItem)newCharacterInstance;
             inventoryCollection.AddItem(inventoryItem);
         }
     }

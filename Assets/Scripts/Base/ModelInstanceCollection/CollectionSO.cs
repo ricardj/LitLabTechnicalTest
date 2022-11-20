@@ -18,6 +18,8 @@ public class CollectionSO<T> : ScriptableObject, ICountable
 
     [Header("Events")]
     public CollectionItemEvent OnItemAdded;
+    public CollectionItemEvent OnItemRemoved;
+    public UnityEvent OnCollectionUpdated;
 
     public List<T> CollectionList
     {
@@ -46,6 +48,14 @@ public class CollectionSO<T> : ScriptableObject, ICountable
     {
         CollectionList.Add(item);
         OnItemAdded.Invoke(item);
+        OnCollectionUpdated.Invoke();
+    }
+
+    public void RemoveItem(T item)
+    {
+        CollectionList.Remove(item);
+        OnItemRemoved.Invoke(item);
+        OnCollectionUpdated.Invoke();
     }
     public List<T> GetItems()
     {

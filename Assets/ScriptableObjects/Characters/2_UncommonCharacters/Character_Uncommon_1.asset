@@ -17,6 +17,7 @@ MonoBehaviour:
   _taggedData:
     tags:
     - {fileID: 11400000, guid: 0572271b75be98e4f9930da31c8bed48, type: 2}
+  _characterPrefab: {fileID: 7189555022278299378, guid: 32ff199929821c44cb4d6e5a3e7c9ea9, type: 3}
   _defaultPurchaseRequirements:
     _costs:
     - targetResource: {fileID: 11400000, guid: aaacb4694d521cc4ba1e5e73b8fa1294, type: 2}

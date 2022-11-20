@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 [Serializable]
-public class Instance<T> : IInstance<T>
+public class Instance<T> : IUniqueIdentified, IInstance<T>
 {
 
     [SerializeField] T _model;
@@ -25,5 +26,22 @@ public class Instance<T> : IInstance<T>
     public void SetModel(T model)
     {
         this._model = model;
+    }
+}
+
+public class IUniqueIdentified
+{
+
+    [SerializeField] string uid = "0";
+    public string UID
+    {
+        get
+        {
+            if (uid == "0")
+            {
+                uid = Guid.NewGuid().ToString();
+            }
+            return uid;
+        }
     }
 }

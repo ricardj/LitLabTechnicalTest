@@ -743,6 +743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentPlayerInstance:
+    uid: 
     _model: {fileID: 0}
     _playerName: 
     _playerResourceData:
@@ -2743,8 +2744,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93c509cc4251fd49983cc0bae1358b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentDragable: {fileID: 0}
+  _slotSnapDistance: 1.45
+  OnItemStartDragging:
+    m_PersistentCalls:
+      m_Calls: []
+  OnItemStopDragging:
+    m_PersistentCalls:
+      m_Calls: []
   inventorySlotId: 1
   _inventorySlotRadius: 0.66
+  _currentInventoryPrefabInstance: {fileID: 0}
 --- !u!1 &353283350
 GameObject:
   m_ObjectHideFlags: 0
@@ -3806,8 +3816,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93c509cc4251fd49983cc0bae1358b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentDragable: {fileID: 0}
+  _slotSnapDistance: 1.45
+  OnItemStartDragging:
+    m_PersistentCalls:
+      m_Calls: []
+  OnItemStopDragging:
+    m_PersistentCalls:
+      m_Calls: []
   inventorySlotId: 8
   _inventorySlotRadius: 0.66
+  _currentInventoryPrefabInstance: {fileID: 0}
 --- !u!1 &522266537
 GameObject:
   m_ObjectHideFlags: 0
@@ -5598,6 +5617,7 @@ MonoBehaviour:
   _playerModel: {fileID: 11400000, guid: 0628c891b6d8e334c978d80f2d64414b, type: 2}
   _playerManager: {fileID: 93631382}
   _currentPlayerInstance:
+    uid: 
     _model: {fileID: 0}
     _playerName: 
     _playerResourceData:
@@ -6311,7 +6331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100054, guid: e4305b028a1f42c4f9d34545844691e7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100078, guid: e4305b028a1f42c4f9d34545844691e7, type: 3}
       propertyPath: m_IsActive
@@ -7215,8 +7235,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93c509cc4251fd49983cc0bae1358b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentDragable: {fileID: 0}
+  _slotSnapDistance: 1.45
+  OnItemStartDragging:
+    m_PersistentCalls:
+      m_Calls: []
+  OnItemStopDragging:
+    m_PersistentCalls:
+      m_Calls: []
   inventorySlotId: 7
   _inventorySlotRadius: 0.66
+  _currentInventoryPrefabInstance: {fileID: 0}
 --- !u!1 &944422270
 GameObject:
   m_ObjectHideFlags: 0
@@ -7341,8 +7370,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93c509cc4251fd49983cc0bae1358b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentDragable: {fileID: 0}
+  _slotSnapDistance: 1.45
+  OnItemStartDragging:
+    m_PersistentCalls:
+      m_Calls: []
+  OnItemStopDragging:
+    m_PersistentCalls:
+      m_Calls: []
   inventorySlotId: 5
   _inventorySlotRadius: 0.66
+  _currentInventoryPrefabInstance: {fileID: 0}
 --- !u!1 &953774499
 GameObject:
   m_ObjectHideFlags: 0
@@ -8048,7 +8086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventoryCollection: {fileID: 11400000, guid: 17c06d0bc6f64d14a960b0f8e5eb779f, type: 2}
-  inventoryController: {fileID: 1413316223}
+  _inventoryController: {fileID: 0}
 --- !u!1 &1023958288
 GameObject:
   m_ObjectHideFlags: 0
@@ -9451,8 +9489,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93c509cc4251fd49983cc0bae1358b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentDragable: {fileID: 0}
+  _slotSnapDistance: 1.45
+  OnItemStartDragging:
+    m_PersistentCalls:
+      m_Calls: []
+  OnItemStopDragging:
+    m_PersistentCalls:
+      m_Calls: []
   inventorySlotId: 3
   _inventorySlotRadius: 0.66
+  _currentInventoryPrefabInstance: {fileID: 0}
 --- !u!1 &1201176850
 GameObject:
   m_ObjectHideFlags: 0
@@ -10883,7 +10930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540e7edcf45d6f0448f4478c02665022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySlots:
+  _inventorySlots:
   - {fileID: 1627051638}
   - {fileID: 350517355}
   - {fileID: 2081990899}
@@ -12177,6 +12224,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1565546408}
   m_Mesh: {fileID: -1594768711887376374, guid: 0da84d291614b6e4a8218942c729e672, type: 3}
+--- !u!1 &1567057815 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 560da4680abdb604b9d5a285e8adc23f, type: 3}
+  m_PrefabInstance: {fileID: 1897143830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1567057816
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567057815}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 48.268948, y: 29.490568, z: 48.244877}
+  m_Center: {x: 0.16672592, y: -14.745284, z: 0.38420188}
 --- !u!1 &1567388969
 GameObject:
   m_ObjectHideFlags: 0
@@ -12680,8 +12745,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93c509cc4251fd49983cc0bae1358b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentDragable: {fileID: 0}
+  _slotSnapDistance: 1.45
+  OnItemStartDragging:
+    m_PersistentCalls:
+      m_Calls: []
+  OnItemStopDragging:
+    m_PersistentCalls:
+      m_Calls: []
   inventorySlotId: 6
   _inventorySlotRadius: 0.66
+  _currentInventoryPrefabInstance: {fileID: 0}
 --- !u!1 &1627051636
 GameObject:
   m_ObjectHideFlags: 0
@@ -12725,8 +12799,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93c509cc4251fd49983cc0bae1358b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentDragable: {fileID: 0}
+  _slotSnapDistance: 1.45
+  OnItemStartDragging:
+    m_PersistentCalls:
+      m_Calls: []
+  OnItemStopDragging:
+    m_PersistentCalls:
+      m_Calls: []
   inventorySlotId: 0
   _inventorySlotRadius: 0.66
+  _currentInventoryPrefabInstance: {fileID: 0}
 --- !u!1001 &1628129527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13298,8 +13381,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93c509cc4251fd49983cc0bae1358b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentDragable: {fileID: 0}
+  _slotSnapDistance: 1.45
+  OnItemStartDragging:
+    m_PersistentCalls:
+      m_Calls: []
+  OnItemStopDragging:
+    m_PersistentCalls:
+      m_Calls: []
   inventorySlotId: 4
   _inventorySlotRadius: 0.66
+  _currentInventoryPrefabInstance: {fileID: 0}
 --- !u!1001 &1757476163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14819,6 +14911,10 @@ PrefabInstance:
       value: terrain
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 560da4680abdb604b9d5a285e8adc23f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 560da4680abdb604b9d5a285e8adc23f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -16261,8 +16357,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93c509cc4251fd49983cc0bae1358b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentDragable: {fileID: 0}
+  _slotSnapDistance: 1.45
+  OnItemStartDragging:
+    m_PersistentCalls:
+      m_Calls: []
+  OnItemStopDragging:
+    m_PersistentCalls:
+      m_Calls: []
   inventorySlotId: 2
   _inventorySlotRadius: 0.66
+  _currentInventoryPrefabInstance: {fileID: 0}
 --- !u!1001 &2087498615
 PrefabInstance:
   m_ObjectHideFlags: 0
