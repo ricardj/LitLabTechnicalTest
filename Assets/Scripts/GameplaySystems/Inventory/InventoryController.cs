@@ -19,7 +19,7 @@ public class InventoryController : MonoBehaviour
 
     private void UpdateInventoryCollection()
     {
-        _runtimeDragableSlotsCollection.Add(_inventorySlots.OfType<IDragableSlot>().ToList());
+        _runtimeDragableSlotsCollection.AddItem(_inventorySlots.OfType<IDragableSlot>().ToList());
     }
 
     private void ConfigureSlotReordering()

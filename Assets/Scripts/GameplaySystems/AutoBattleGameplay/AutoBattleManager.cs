@@ -4,18 +4,27 @@ using UnityEngine;
 public class AutoBattleManager : MonoBehaviour
 {
 
-    public AutoBattleRoundsManager autoBattleRoundsManager;
+    [SerializeField] AutoBattleRoundsManager _autoBattleRoundsManager;
 
 
 
     public void StartBattle()
     {
-
+        StartCoroutine(StartBattleSequence());
     }
 
     public IEnumerator StartBattleSequence()
     {
-        yield return null;
+        yield return _autoBattleRoundsManager.StartRoundsSequence();
+       
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartBattle();
+        }
     }
 
 }

@@ -9,6 +9,6 @@ public class BattlefieldController : MonoBehaviour
 
     public void Start()
     {
-        _dragableSlots.Add(_battlefieldDragableSlots.OfType<IDragableSlot>().ToList());
+        _dragableSlots.AddItem(_battlefieldDragableSlots.OfType<IDragableSlot>().ToList());
     }
 }

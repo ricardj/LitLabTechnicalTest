@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7310345679877666235}
   - component: {fileID: 2066059265376141161}
   - component: {fileID: 2463605535121610071}
+  - component: {fileID: 3803165353515207579}
+  - component: {fileID: 4748736435544536894}
   m_Layer: 0
   m_Name: AutoBattleCharacter
   m_TagString: Untagged
@@ -65,6 +67,8 @@ MonoBehaviour:
   _targetSlots: {fileID: 11400000, guid: 4bae02bda60038f46b5462812cdaa13d, type: 2}
   _mainCamera: {fileID: 0}
   _objectSelected: 0
+  _currentDragableSlot: {fileID: 0}
+  _lastDragableSlot: {fileID: 0}
   OnStartDragging:
     m_PersistentCalls:
       m_Calls: []
@@ -101,6 +105,39 @@ CapsuleCollider:
   m_Height: 1.39
   m_Direction: 1
   m_Center: {x: 0, y: 0.76, z: 0}
+--- !u!114 &3803165353515207579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5028074592470004506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06f41dffc6ff5ff44b2cd1cd73ec5922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceData:
+    _resourceAmounts: []
+  _taggedData:
+    tags: []
+--- !u!114 &4748736435544536894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5028074592470004506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9894c3a7673f47b46a32c09f0801b510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceData:
+    _resourceAmounts: []
+  _taggedData:
+    tags: []
+  _damageableCollectionSO: {fileID: 11400000, guid: 5c509a806661c3448b0eaf595da03d5e, type: 2}
 --- !u!1001 &2046156520088463535
 PrefabInstance:
   m_ObjectHideFlags: 0
