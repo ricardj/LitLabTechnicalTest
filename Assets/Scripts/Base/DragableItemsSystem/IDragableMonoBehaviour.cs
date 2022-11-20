@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,14 @@ public class IDragableMonoBehaviour : MonoBehaviour
 {
     [Header("Drag parameters")]
     [SerializeField] LayerMask _raycastLayerMask;
+    [SerializeField] DragableSlotsCollectionSO _targetSlots;
+
     [Header("Debug values")]
     [SerializeField] Camera _mainCamera;
     //[SerializeField] Vector3 _originalPosition;
     [SerializeField] bool _objectSelected = false;
+    [SerializeField] IDragableSlot _currentDragableSlot;
+    [SerializeField] IDragableSlot _lastDragableSlot;
 
     [Header("Events")]
     public DragableMonoBehaviourEvent OnStartDragging;
@@ -23,6 +28,12 @@ public class IDragableMonoBehaviour : MonoBehaviour
     private void SelectObject()
     {
         //_originalPosition = transform.position;
+        if (_currentDragableSlot != null)
+        {
+            _lastDragableSlot = _currentDragableSlot;
+            _currentDragableSlot.Clear();
+            _currentDragableSlot = null;
+        }
         _objectSelected = true;
         OnStartDragging.Invoke(this);
     }
@@ -62,8 +73,46 @@ public class IDragableMonoBehaviour : MonoBehaviour
     private void UnselectObject()
     {
         _objectSelected = false;
+
+        IDragableSlot dragableSlot = _targetSlots.GetItems().Find(targetSlot => targetSlot.IsTargetInRange(transform));
+        SetupOnSlot(dragableSlot);
+
+
         //transform.position = _originalPosition;
         OnStopDragging.Invoke(this);
+    }
+
+    public void SetupOnSlot(IDragableSlot dragableSlot)
+    {
+        if (dragableSlot != null)
+        {
+            if (dragableSlot.IsFilled())
+            {
+                dragableSlot.Swap(this);
+            }
+            else
+            {
+                dragableSlot.Setup(this);
+            }
+        }
+        _currentDragableSlot = dragableSlot;
+
+        SetupCurrentSlotPosition();
+    }
+
+    private void SetupCurrentSlotPosition()
+    {
+        if (_currentDragableSlot != null)
+            transform.DOMove(_currentDragableSlot.transform.position, 0.3f);
+    }
+
+    public IDragableSlot GetLastDragableSlot()
+    {
+        return _lastDragableSlot;
+    }
+    public IDragableSlot GetCurrentDragableSlot()
+    {
+        return _currentDragableSlot;
     }
 }
 

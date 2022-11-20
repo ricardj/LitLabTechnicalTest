@@ -9,47 +9,37 @@ public class IDragableSlot : MonoBehaviour
     [SerializeField] protected float _slotSnapDistance = 4;
 
     [Header("Events")]
-    public DragableMonoBehaviourEvent OnItemStartDragging;
-    public DragableMonoBehaviourEvent OnItemStopDragging;
+    public DragableMonoBehaviourEvent OnDragableItemPositioned;
+    public DragableMonoBehaviourEvent OnDragableItemCleared;
+    public DragableMonoBehaviourPairEvent OnDragableItemSwap;
 
     public void Setup(GameObject targetGameObject)
     {
-        
-        IDragableMonoBehaviour dragableMonoBehaviour = targetGameObject.GetComponentInChildren<IDragableMonoBehaviour>();
-        if (dragableMonoBehaviour != null)
-            Setup(dragableMonoBehaviour);
+
+
+    }
+
+    public void Swap(IDragableMonoBehaviour targetDragable)
+    {
+        if (_currentDragable != null)
+            OnDragableItemSwap.Invoke(_currentDragable, targetDragable);
+        Clear();
+        Setup(targetDragable);
     }
 
     public void Setup(IDragableMonoBehaviour dragableMonobehaviour)
     {
         _currentDragable = dragableMonobehaviour;
-        _currentDragable.OnStartDragging.AddListener(OnStartDragging);
-        _currentDragable.OnStopDragging.AddListener(OnStopDragging);
-        SetToPosition(dragableMonobehaviour);
+        OnDragableItemPositioned.Invoke(dragableMonobehaviour);
     }
 
-    private void SetToPosition(IDragableMonoBehaviour dragableMonobehaviour)
-    {
-
-        //dragableMonobehaviour.transform.position = transform.position;
-        dragableMonobehaviour.transform.DOMove(transform.position, 0.3f);
-    }
 
     public void Clear()
     {
-        _currentDragable.OnStartDragging.RemoveListener(OnStartDragging);
-        _currentDragable.OnStopDragging.RemoveListener(OnStopDragging);
+        OnDragableItemCleared.Invoke(_currentDragable);
         _currentDragable = null;
     }
-    private void OnStopDragging(IDragableMonoBehaviour dragableMonoBehaviour)
-    {
-        OnItemStartDragging.Invoke(dragableMonoBehaviour);
-    }
 
-    private void OnStartDragging(IDragableMonoBehaviour dragableMonoBehaviour)
-    {
-        OnItemStopDragging.Invoke(dragableMonoBehaviour);
-    }
 
     public bool IsFilled()
     {
@@ -61,5 +51,8 @@ public class IDragableSlot : MonoBehaviour
         return _currentDragable;
     }
 
-
+    public bool IsTargetInRange(Transform targetTransform)
+    {
+        return Vector3.Distance(targetTransform.position, transform.position) <= _slotSnapDistance;
+    }
 }

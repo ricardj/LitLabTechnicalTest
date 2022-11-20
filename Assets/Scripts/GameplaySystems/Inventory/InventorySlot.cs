@@ -7,6 +7,7 @@ public class InventorySlot : IDragableSlot
     public int inventorySlotId = 0;
     [SerializeField] float _inventorySlotRadius = 2f;
 
+
     [Header("Debug values")]
     [SerializeField] IInventoryItem _currentInventoryItem;
     [SerializeField] GameObject _currentInventoryPrefabInstance;
@@ -34,16 +35,18 @@ public class InventorySlot : IDragableSlot
             GameObject dragablePrefab = inventoryItem.GetSpawnPrefab();
             GameObject newInstance = Instantiate(dragablePrefab);
             _currentInventoryPrefabInstance = newInstance;
-            Setup(_currentInventoryPrefabInstance);
+            IDragableMonoBehaviour dragableMonoBehaviour = _currentInventoryPrefabInstance.GetComponentInChildren<IDragableMonoBehaviour>();
+            if (dragableMonoBehaviour != null)
+            {
+                dragableMonoBehaviour.SetupOnSlot(this);
+            }
+
 
         }
 
     }
 
-    public bool IsTargetInRange(Transform targetTransform)
-    {
-        return Vector3.Distance(targetTransform.position, transform.position) <= _inventorySlotRadius;
-    }
+
 
 
 }

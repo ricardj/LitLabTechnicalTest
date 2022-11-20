@@ -51,6 +51,12 @@ public class CollectionSO<T> : ScriptableObject, ICountable
         OnCollectionUpdated.Invoke();
     }
 
+    public void Add(List<T> inventorySlots)
+    {
+        CollectionList.AddRange(inventorySlots);
+        OnCollectionUpdated.Invoke();
+    }
+
     public void RemoveItem(T item)
     {
         CollectionList.Remove(item);

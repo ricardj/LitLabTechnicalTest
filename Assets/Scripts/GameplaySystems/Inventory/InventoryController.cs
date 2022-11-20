@@ -1,57 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
     [SerializeField] List<InventorySlot> _inventorySlots;
+    [SerializeField] DragableSlotsCollectionSO _runtimeDragableSlotsCollection;
 
     public List<InventorySlot> InventorySlots { get => _inventorySlots; set => _inventorySlots = value; }
 
 
     public void Start()
     {
+        UpdateInventoryCollection();
+        ConfigureSlotReordering();
+    }
+
+    private void UpdateInventoryCollection()
+    {
+        _runtimeDragableSlotsCollection.Add(_inventorySlots.OfType<IDragableSlot>().ToList());
+    }
+
+    private void ConfigureSlotReordering()
+    {
         _inventorySlots.ForEach(inventorySlot =>
         {
-            inventorySlot.OnItemStopDragging.AddListener(currentDraggingItem =>
+            inventorySlot.OnDragableItemSwap.AddListener((oldItem, newItem) =>
             {
-                InventorySlot snapInventorySlot = _inventorySlots.Find(slot => slot.IsTargetInRange(currentDraggingItem.transform));
-
-                if (snapInventorySlot != null)
+                IDragableSlot lastDragableSlot = newItem.GetLastDragableSlot();
+                if (lastDragableSlot != null)
                 {
-                    if (snapInventorySlot.IsFilled())
-                    {
+                    oldItem.SetupOnSlot(lastDragableSlot);
 
-                        if (snapInventorySlot.GetFill() == currentDraggingItem)
-                        {
-                            inventorySlot.Clear();
-                            inventorySlot.Setup(currentDraggingItem);
-                        }
-                        else
-                        {
-                            //swap places
-                            inventorySlot.Clear();
-                            inventorySlot.Setup(snapInventorySlot.GetFill());
-                            snapInventorySlot.Clear();
-                            snapInventorySlot.Setup(currentDraggingItem);
-                        }
-                    }
-                    else
-                    {
-                        inventorySlot.Clear();
-                        snapInventorySlot.Setup(currentDraggingItem);
-                    }
                 }
                 else
                 {
-                    inventorySlot.Clear();
+                    IDragableSlot emptySlot = _inventorySlots.Find(inventorySlot => !inventorySlot.IsFilled());
+                    if (emptySlot != null)
+                    {
+                        oldItem.SetupOnSlot(emptySlot);
+                    }
+                        
                 }
             });
 
         });
     }
-
-
 
     public void Setup(List<IInventoryItem> inventoryItems)
     {
