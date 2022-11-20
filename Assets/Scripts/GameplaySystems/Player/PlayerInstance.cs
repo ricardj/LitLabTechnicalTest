@@ -11,6 +11,7 @@ public class PlayerInstance : Instance<PlayerSO>, IResourceBank
     public PlayerInstance(PlayerSO model) : base(model)
     {
         _playerName = model.GetName();
+        _playerResourceData = new ResourceData();
         _playerResourceData.Copy(model.GetResourceData());
     }
 

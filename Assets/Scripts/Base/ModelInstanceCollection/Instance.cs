@@ -7,6 +7,10 @@ public class Instance<T> : IInstance<T>
 
     [SerializeField] T _model;
 
+    public Instance()
+    {
+
+    }
 
     public Instance(T model)
     {

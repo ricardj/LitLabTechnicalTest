@@ -15,9 +15,10 @@ public class ResourceAmount
         this.amount = resourceAmount.amount;
     }
 
-    public void SubstractResource(float amount)
+    public void SubstractResource(float substractAmount)
     {
-        this.amount -= amount;
+
+        this.amount -= substractAmount;
         this.amount = Mathf.Clamp(this.amount, 0, this.amount);
     }
     public void AddResource(float amount)

@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "CyberMonsters/New Character")]
-public class CharacterSO : ModelSO<CharacterInstance>, IVisible, ITagged
+public class CharacterSO : ModelSO<CharacterInstance>, IVisible, ITagged, IShopPurchaseable
 {
 
     [SerializeField] string _defaultCharacterName;
@@ -12,9 +12,12 @@ public class CharacterSO : ModelSO<CharacterInstance>, IVisible, ITagged
 
     public override CharacterInstance GetInstance()
     {
-        return new CharacterInstance(this)
-        {
-        };
+        return new CharacterInstance(this);
+    }
+
+    public string GetName()
+    {
+        return _defaultCharacterName;
     }
 
     public Sprite GetSprite()
@@ -27,8 +30,10 @@ public class CharacterSO : ModelSO<CharacterInstance>, IVisible, ITagged
         return _taggedData;
     }
 
-    internal ShopPurchaseRequirements GetPurchaseRequirements()
+    public ShopPurchaseRequirements GetPurchaseRequirements()
     {
-        throw new NotImplementedException();
+        return _defaultPurchaseRequirements;
     }
+
+
 }

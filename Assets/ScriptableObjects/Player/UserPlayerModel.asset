@@ -12,3 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a6bc17cdbb4424d858c1592ea16af3, type: 3}
   m_Name: UserPlayerModel
   m_EditorClassIdentifier: 
+  _playerName: John Silver
+  _playerResources:
+    _resourceAmounts:
+    - targetResource: {fileID: 11400000, guid: aaacb4694d521cc4ba1e5e73b8fa1294, type: 2}
+      amount: 10
+    - targetResource: {fileID: 11400000, guid: 5df20ca619270ac4f8a66d10385e26d5, type: 2}
+      amount: 10
+    - targetResource: {fileID: 11400000, guid: f5a0afbb01db3d649900570160be7870, type: 2}
+      amount: 10

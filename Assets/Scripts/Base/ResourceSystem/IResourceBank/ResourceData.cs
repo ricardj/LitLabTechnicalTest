@@ -7,6 +7,14 @@ public class ResourceData
 {
 
     [SerializeField] List<ResourceAmount> _resourceAmounts;
+    public ResourceData()
+    {
+        _resourceAmounts = new List<ResourceAmount>();
+    }
+    public ResourceData(List<ResourceAmount> resourceAmounts)
+    {
+        _resourceAmounts = resourceAmounts;
+    }
 
     public void Copy(ResourceData resourceData)
     {
@@ -64,14 +72,14 @@ public class ResourceData
         return hasEnough;
     }
 
-    internal void SubstractResource(List<ResourceAmount> resourceAmounts)
+    public void SubstractResource(List<ResourceAmount> substractResourceAmount)
     {
-        resourceAmounts.ForEach(resourceAmount =>
+        substractResourceAmount.ForEach(resourceAmount =>
         {
             ResourceAmount currentResourceAmount = GetTargetResourceAmount(resourceAmount.targetResource);
             if (currentResourceAmount != null)
             {
-                currentResourceAmount.SubstractResource(currentResourceAmount.amount);
+                currentResourceAmount.SubstractResource(resourceAmount.amount);
             }
         });
     }

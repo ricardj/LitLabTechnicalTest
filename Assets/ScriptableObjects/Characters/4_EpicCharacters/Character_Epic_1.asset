@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5213df3e05a704cb7698eedb947186, type: 3}
+  m_Name: Character_Epic_1
+  m_EditorClassIdentifier: 
+  _defaultCharacterName: Character epic
+  _defaultCharacterSprite: {fileID: 21300000, guid: d24e7e0b75e1a244bb9687d6fd4315ef, type: 3}
+  _taggedData:
+    tags:
+    - {fileID: 11400000, guid: bec1591862452d5468c302a973170663, type: 2}
+  _defaultPurchaseRequirements:
+    _costs:
+    - targetResource: {fileID: 11400000, guid: aaacb4694d521cc4ba1e5e73b8fa1294, type: 2}
+      amount: 4
