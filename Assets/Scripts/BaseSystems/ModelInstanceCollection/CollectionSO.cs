@@ -46,9 +46,12 @@ public class CollectionSO<T> : ScriptableObject, ICountable
 
     public void AddItem(T item)
     {
-        CollectionList.Add(item);
-        OnItemAdded.Invoke(item);
-        OnCollectionUpdated.Invoke();
+        if (!CollectionList.Contains(item))
+        {
+            CollectionList.Add(item);
+            OnItemAdded.Invoke(item);
+            OnCollectionUpdated.Invoke();
+        }
     }
 
     public void AddItem(List<T> inventorySlots)
@@ -59,9 +62,12 @@ public class CollectionSO<T> : ScriptableObject, ICountable
 
     public void RemoveItem(T item)
     {
-        CollectionList.Remove(item);
-        OnItemRemoved.Invoke(item);
-        OnCollectionUpdated.Invoke();
+        if (CollectionList.Contains(item))
+        {
+            CollectionList.Remove(item);
+            OnItemRemoved.Invoke(item);
+            OnCollectionUpdated.Invoke();
+        }
     }
     public List<T> GetItems()
     {

@@ -3,6 +3,9 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
+[Serializable]
+public class DragableSlotEvent : UnityEvent<IDragableSlot> { }
+
 public class IDragableSlot : MonoBehaviour
 {
     [Header("Debug configuration")]
@@ -18,17 +21,15 @@ public class IDragableSlot : MonoBehaviour
     public DragableMonoBehaviourEvent OnDragableItemCleared;
     public DragableMonoBehaviourPairEvent OnDragableItemSwap;
 
-    public void Setup(GameObject targetGameObject)
-    {
 
 
-    }
 
     public void Swap(IDragableMonoBehaviour targetDragable)
     {
         if (_currentDragable != null)
             OnDragableItemSwap.Invoke(_currentDragable, targetDragable);
         Clear();
+
         Setup(targetDragable);
     }
 
@@ -36,6 +37,7 @@ public class IDragableSlot : MonoBehaviour
     {
         _currentDragable = dragableMonobehaviour;
         OnDragableItemPositioned.Invoke(dragableMonobehaviour);
+        OnSetupSlot();
     }
 
 
@@ -43,6 +45,7 @@ public class IDragableSlot : MonoBehaviour
     {
         OnDragableItemCleared.Invoke(_currentDragable);
         _currentDragable = null;
+        OnClearSlot();
     }
 
 
@@ -67,4 +70,7 @@ public class IDragableSlot : MonoBehaviour
         Gizmos.DrawSphere(transform.position, _inventorySlotRadius);
         Gizmos.DrawWireSphere(transform.position, _slotSnapDistance);
     }
+
+    protected virtual void OnClearSlot() { }
+    protected virtual void OnSetupSlot() { }
 }

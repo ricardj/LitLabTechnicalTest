@@ -36,24 +36,51 @@ public class InventoryController : MonoBehaviour
                 }
                 else
                 {
-                    IDragableSlot emptySlot = _inventorySlots.Find(inventorySlot => !inventorySlot.IsFilled());
+                    IDragableSlot emptySlot = FindEmptySlot();
                     if (emptySlot != null)
                     {
                         oldItem.SetupOnSlot(emptySlot);
                     }
-                        
+
                 }
             });
 
         });
     }
 
+
+
     public void Setup(List<IInventoryItem> inventoryItems)
     {
-        for (int i = 0; i < inventoryItems.Count && i < inventoryItems.Count; i++)
+        inventoryItems.ForEach(inventoryItem =>
         {
-            InventorySlot currentSlot = InventorySlots[i];
-            currentSlot.Setup(inventoryItems[i]);
-        }
+            InventorySlot oldInventorySlot = InventorySlots.Find(slot => slot.GetCurrentInventoryItem() == inventoryItem);
+            if (oldInventorySlot == null)
+            {
+                InventorySlot emptyInventorySlot = FindEmptySlot();
+                if (emptyInventorySlot != null)
+                {
+                    emptyInventorySlot.Setup(inventoryItem);
+                }
+            }
+            else
+            {
+                if (!oldInventorySlot.IsFilled())
+                {
+                    oldInventorySlot.Setup(inventoryItem);
+                }
+            }
+        });
+
+        //for (int i = 0; i < inventoryItems.Count && i < inventoryItems.Count; i++)
+        //{
+        //    InventorySlot currentSlot = InventorySlots[i];
+        //    currentSlot.Setup(inventoryItems[i]);
+        //}
+    }
+
+    private InventorySlot FindEmptySlot()
+    {
+        return _inventorySlots.Find(inventorySlot => !inventorySlot.IsFilled());
     }
 }

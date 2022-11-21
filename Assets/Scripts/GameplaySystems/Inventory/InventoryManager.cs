@@ -22,7 +22,7 @@ public class InventoryManager : MonoBehaviour
         _inventoryCollection.OnCollectionUpdated.RemoveListener(UpdateInventory);
     }
 
-    private void UpdateInventory()
+    public void UpdateInventory()
     {
         _inventoryController.Setup(_inventoryCollection.GetItems());
     }
