@@ -7,7 +7,9 @@ public class ResourceAmount
 {
     public ResourceSO targetResource;
     public float amount;
-    private ResourceAmount resourceAmount;
+
+    public ResourceAmountEvent OnResourceAmountUpdated = new ResourceAmountEvent();
+
 
     public ResourceAmount(ResourceAmount resourceAmount)
     {
@@ -20,9 +22,16 @@ public class ResourceAmount
 
         this.amount -= substractAmount;
         this.amount = Mathf.Clamp(this.amount, 0, this.amount);
+        OnResourceAmountUpdated.Invoke(this);
     }
     public void AddResource(float amount)
     {
         this.amount += amount;
+        OnResourceAmountUpdated.Invoke(this);
+    }
+
+    public float GetAmount()
+    {
+        return amount;
     }
 }

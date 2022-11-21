@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f12583c80b411e418d5a2300ed86f4b, type: 3}
-  m_Name: Level
+  m_Script: {fileID: 11500000, guid: 98c30dccf2ce5c149a157b2586872ec8, type: 3}
+  m_Name: RestartGame
   m_EditorClassIdentifier: 
-  _resourceName: Level
-  _resourceSprite: {fileID: 0}
+  description: Put here the events intention

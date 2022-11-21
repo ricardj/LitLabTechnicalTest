@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f12583c80b411e418d5a2300ed86f4b, type: 3}
   m_Name: Life
   m_EditorClassIdentifier: 
+  _resourceName: Life
+  _resourceSprite: {fileID: 0}

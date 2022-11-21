@@ -6,10 +6,12 @@ public class PlayerManager : MonoBehaviour
 {
 
     [SerializeField] PlayerInstance _currentPlayerInstance;
+    [SerializeField] PlayerGUI _playerGUI;
 
     public void SetupPlayerInstance(PlayerInstance currentPlayerInstance)
     {
         this._currentPlayerInstance = currentPlayerInstance;
+        _playerGUI.Setup(_currentPlayerInstance.GetResourceData());
     }
 
     public bool PlayerHasEnough(ResourceSO resourceType, float amount)

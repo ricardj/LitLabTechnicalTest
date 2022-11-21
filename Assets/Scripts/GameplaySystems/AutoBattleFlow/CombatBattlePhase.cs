@@ -31,12 +31,17 @@ public class CombatBattlePhase : AutoBattlePhase
         _isCombatFinished = true;
     }
 
-    public override IEnumerator StartCombatPhase()
+    protected override IEnumerator AutoBattlePhaseSequence()
     {
         _spawnEnemyTeam.RaiseEvent();
         yield return new WaitForSeconds(_timeBetweenEnemySpawnAndCombatStart);
         _startCombat.RaiseEvent();
         _isCombatFinished = false;
         yield return new WaitUntil(() => _isCombatFinished);
+    }
+
+    public override void SetupGUI(AutoBattleGUI autoBattleGUI)
+    {
+        autoBattleGUI.ShowFight();
     }
 }

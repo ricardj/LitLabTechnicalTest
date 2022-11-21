@@ -5,8 +5,30 @@ public class PreparationBattlePhase : AutoBattlePhase
 {
     [SerializeField] float _phaseDuration = 20f;
 
-    public override IEnumerator StartCombatPhase()
+    [ReadOnly]
+    [SerializeField] int _secondsCounter = 0;
+
+    protected override IEnumerator AutoBattlePhaseSequence()
     {
-        yield return new WaitForSeconds(_phaseDuration);
+        while (_secondsCounter < _phaseDuration)
+        {
+            _secondsCounter++;
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    public override void SetupGUI(AutoBattleGUI autoBattleGUI)
+    {
+        StartCoroutine(PreparationPhaseSequence(autoBattleGUI));
+    }
+
+    IEnumerator PreparationPhaseSequence(AutoBattleGUI battleGUI)
+    {
+        battleGUI.ShowPreparation();
+        while (this.IsPhaseActive())
+        {
+            battleGUI.UpdateCounter(_phaseDuration - _secondsCounter);
+            yield return null;
+        }
     }
 }

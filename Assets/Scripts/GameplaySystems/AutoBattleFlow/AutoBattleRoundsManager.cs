@@ -3,9 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class AutoBattleRoundsManager : MonoBehaviour
 {
     [SerializeField] List<AutoBattleRound> _autoBattleRounds;
+
+    public AutoBattlePhaseEvent OnAutoBattlePhaseStart;
+
+    public void Awake()
+    {
+        _autoBattleRounds.ForEach(round => round.OnAutoBattlePhaseStart.AddListener(OnAutoBattlePhaseStart.Invoke));
+    }
 
     public IEnumerator StartRoundsSequence()
     {

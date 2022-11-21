@@ -5,25 +5,36 @@ public class AutoBattleManager : MonoBehaviour
 {
 
     [SerializeField] AutoBattleRoundsManager _autoBattleRoundsManager;
+    [SerializeField] AutoBattleGUI _autoBattleGUI;
 
+    [ReadOnly]
+    [SerializeField] AutoBattlePhase _currentPhase;
 
-
-    public void StartBattle()
+    public void Start()
     {
-        StartCoroutine(StartBattleSequence());
+        _autoBattleRoundsManager.OnAutoBattlePhaseStart.AddListener(currentPhase =>
+        {
+            this._currentPhase = currentPhase;
+            this._currentPhase.SetupGUI(_autoBattleGUI);
+        });
     }
 
-    public IEnumerator StartBattleSequence()
+
+    public void StartAutoBattle()
+    {
+        StartCoroutine(StartAutoBattleSequence());
+    }
+
+    public IEnumerator StartAutoBattleSequence()
     {
         yield return _autoBattleRoundsManager.StartRoundsSequence();
-       
     }
 
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartBattle();
+            StartAutoBattle();
         }
     }
 
