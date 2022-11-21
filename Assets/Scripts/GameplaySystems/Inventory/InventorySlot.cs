@@ -12,33 +12,44 @@ public class InventorySlot : IDragableSlot
     [SerializeField] IInventoryItem _currentInventoryItem;
     [SerializeField] GameObject _currentInventoryPrefabInstance;
 
-
- 
-
-    public void Setup(IInventoryItem inventoryItem)
+    public void Start()
     {
-        if (this._currentInventoryItem != inventoryItem)
-        {
-            if (_currentInventoryPrefabInstance != null)
-            {
-                Destroy(_currentInventoryPrefabInstance.gameObject);
-            }
-
-            this._currentInventoryItem = inventoryItem;
-            GameObject dragablePrefab = inventoryItem.GetSpawnPrefab();
-            GameObject newInstance = Instantiate(dragablePrefab);
-            _currentInventoryPrefabInstance = newInstance;
-            IDragableMonoBehaviour dragableMonoBehaviour = _currentInventoryPrefabInstance.GetComponentInChildren<IDragableMonoBehaviour>();
-            if (dragableMonoBehaviour != null)
-            {
-                dragableMonoBehaviour.SetupOnSlot(this);
-            }
-
-
-        }
 
     }
 
+
+
+    public void Setup(IInventoryItem inventoryItem)
+    {
+
+        if (_currentInventoryPrefabInstance != null)
+        {
+            Destroy(_currentInventoryPrefabInstance.gameObject);
+        }
+
+        this._currentInventoryItem = inventoryItem;
+        GameObject dragablePrefab = inventoryItem.GetSpawnPrefab();
+        GameObject newInstance = Instantiate(dragablePrefab);
+        _currentInventoryPrefabInstance = newInstance;
+        IDragableMonoBehaviour dragableMonoBehaviour = _currentInventoryPrefabInstance.GetComponentInChildren<IDragableMonoBehaviour>();
+        if (dragableMonoBehaviour != null)
+        {
+            dragableMonoBehaviour.SetupOnSlot(this);
+        }
+
+
+
+    }
+
+    public IInventoryItem GetCurrentInventoryItem()
+    {
+        return _currentInventoryItem;
+    }
+    protected override void OnClearSlot()
+    {
+        base.OnClearSlot();
+        _currentInventoryPrefabInstance = null;
+    }
 
 
 
