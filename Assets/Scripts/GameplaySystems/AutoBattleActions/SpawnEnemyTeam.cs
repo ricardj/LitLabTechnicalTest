@@ -26,8 +26,6 @@ public class SpawnEnemyTeam : IAction<VoidAction>
             IDragableMonoBehaviour dragableMonoBehaviour = newSpawnPrefabInstance.GetComponentInChildren<IDragableMonoBehaviour>();
             if (dragableMonoBehaviour != null)
             {
-
-
                 BattlefieldDragableSlot randomSlot = _enemiesTargetSlots[Random.Range(0, _enemiesTargetSlots.Count)];
                 dragableMonoBehaviour.SetupOnSlot(randomSlot);
                 dragableMonoBehaviour.Deactivate();

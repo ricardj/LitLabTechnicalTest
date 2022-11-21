@@ -4,7 +4,9 @@ using UnityEngine.Events;
 public abstract class IAction<T> : MonoBehaviour
 {
     [SerializeField] bool _autoAction = true;
+    [Header("Optional:")]
     [SerializeField] EmptyEventSO _eventTriggered;
+
 
     public void OnEnable()
     {
