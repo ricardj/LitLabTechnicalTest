@@ -11,6 +11,12 @@ public class ResourceAmount
     public ResourceAmountEvent OnResourceAmountUpdated = new ResourceAmountEvent();
 
 
+    public ResourceAmount(ResourceSO resource, float amount)
+    {
+        this.targetResource = resource;
+        this.amount = amount;
+    }
+
     public ResourceAmount(ResourceAmount resourceAmount)
     {
         this.targetResource = resourceAmount.targetResource;

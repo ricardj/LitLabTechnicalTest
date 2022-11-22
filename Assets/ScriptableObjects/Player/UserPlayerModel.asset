@@ -17,7 +17,16 @@ MonoBehaviour:
     _resourceAmounts:
     - targetResource: {fileID: 11400000, guid: aaacb4694d521cc4ba1e5e73b8fa1294, type: 2}
       amount: 10
+      OnResourceAmountUpdated:
+        m_PersistentCalls:
+          m_Calls: []
     - targetResource: {fileID: 11400000, guid: 5df20ca619270ac4f8a66d10385e26d5, type: 2}
-      amount: 10
+      amount: 1
+      OnResourceAmountUpdated:
+        m_PersistentCalls:
+          m_Calls: []
     - targetResource: {fileID: 11400000, guid: f5a0afbb01db3d649900570160be7870, type: 2}
       amount: 10
+      OnResourceAmountUpdated:
+        m_PersistentCalls:
+          m_Calls: []

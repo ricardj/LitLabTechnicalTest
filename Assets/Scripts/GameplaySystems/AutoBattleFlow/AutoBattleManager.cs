@@ -17,6 +17,10 @@ public class AutoBattleManager : MonoBehaviour
             this._currentPhase = currentPhase;
             this._currentPhase.SetupGUI(_autoBattleGUI);
         });
+        _autoBattleRoundsManager.OnRoundStart.AddListener(() =>
+        {
+            _autoBattleGUI.SetRound(_autoBattleRoundsManager.GetCurrentRound());
+        });
     }
 
 
@@ -32,6 +36,7 @@ public class AutoBattleManager : MonoBehaviour
 
     public void Update()
     {
+        //DEBUG STUFF
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StartAutoBattle();

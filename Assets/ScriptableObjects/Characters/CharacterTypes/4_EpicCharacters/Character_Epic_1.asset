@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: Character_Epic_1
   m_EditorClassIdentifier: 
   _defaultCharacterName: Character epic
-  _defaultCharacterSprite: {fileID: 21300000, guid: d24e7e0b75e1a244bb9687d6fd4315ef, type: 3}
+  _defaultCharacterSprite: {fileID: 21300000, guid: 8204721ecafe2284386bf76309083184, type: 3}
+  _characterPrefab: {fileID: 7855443727240088044, guid: 0ca6f20c9e4e330419febe0eb884fec9, type: 3}
   _taggedData:
     tags:
     - {fileID: 11400000, guid: bec1591862452d5468c302a973170663, type: 2}
-  _characterPrefab: {fileID: 7189555022278299378, guid: 32ff199929821c44cb4d6e5a3e7c9ea9, type: 3}
   _defaultPurchaseRequirements:
     _costs:
     - targetResource: {fileID: 11400000, guid: aaacb4694d521cc4ba1e5e73b8fa1294, type: 2}
       amount: 4
+      OnResourceAmountUpdated:
+        m_PersistentCalls:
+          m_Calls: []

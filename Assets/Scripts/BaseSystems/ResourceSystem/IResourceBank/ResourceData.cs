@@ -76,11 +76,25 @@ public class ResourceData
     {
         substractResourceAmount.ForEach(resourceAmount =>
         {
-            ResourceAmount currentResourceAmount = GetTargetResourceAmount(resourceAmount.targetResource);
-            if (currentResourceAmount != null)
-            {
-                currentResourceAmount.SubstractResource(resourceAmount.amount);
-            }
+            SubstractResource(resourceAmount);
         });
+    }
+
+    public void SubstractResource(ResourceAmount resourceAmount)
+    {
+        ResourceAmount currentResourceAmount = GetTargetResourceAmount(resourceAmount.targetResource);
+        if (currentResourceAmount != null)
+        {
+            currentResourceAmount.SubstractResource(resourceAmount.amount);
+        }
+    }
+
+    public void AddResource(ResourceAmount resourceAmount)
+    {
+        ResourceAmount currentResourceAmount = GetTargetResourceAmount(resourceAmount.targetResource);
+        if (currentResourceAmount != null)
+        {
+            currentResourceAmount.AddResource(resourceAmount.amount);
+        }
     }
 }

@@ -11,5 +11,17 @@ public class RestartGame : IAction<VoidAction>
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void Update()
+    {
+        //DEBUG KEY
+        if (Application.isEditor)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                ExecuteAction();
+            }
+        }
+    }
+
 
 }

@@ -23,7 +23,6 @@ public class IDragableSlot : MonoBehaviour
 
 
 
-
     public void Swap(IDragableMonoBehaviour targetDragable)
     {
         if (_currentDragable != null)

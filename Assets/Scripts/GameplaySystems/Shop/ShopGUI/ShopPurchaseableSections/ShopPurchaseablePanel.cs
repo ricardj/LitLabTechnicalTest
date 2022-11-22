@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ShopPurchaseablePanel : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _purchaseableText;
+    [SerializeField] Image _purchaseableImage;
     [SerializeField] Button _purchaseableButton;
     [SerializeField] IShopPurchaseable _currentPurchaseable;
 
@@ -19,6 +20,7 @@ public class ShopPurchaseablePanel : MonoBehaviour
     {
         _purchaseableText.text = shopPurchaseable.GetName();
         _currentPurchaseable = shopPurchaseable;
+        _purchaseableImage.sprite = shopPurchaseable.GetSprite();
     }
 
     public IShopPurchaseable GetCurrentPurchaseable()
